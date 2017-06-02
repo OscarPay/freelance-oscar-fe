@@ -6,7 +6,8 @@ import {Document} from './document';
 
 @Component({
   selector: 'documents',
-  templateUrl: 'documents.component.html'
+  templateUrl: 'documents.component.html',
+  styleUrls: ['document.component.css']
 })
 export class DocumentsComponent {
   pageTitle: string = 'Document Dashboard';
@@ -17,21 +18,21 @@ export class DocumentsComponent {
       description: 'asdasd asdasd',
       file_url: 'http://google.com',
       updated_at: '11/11/16',
-      image_url: 'http://google.com'
+      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Mistakes-to-avoid-when-hiring-freelancers.jpg/1280px-Mistakes-to-avoid-when-hiring-freelancers.jpg'
     },
     {
       title: 'My Second Doc',
       description: 'asdasd asdasd',
       file_url: 'http://google.com',
       updated_at: '11/11/16',
-      image_url: 'http://google.com'
+      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Mistakes-to-avoid-when-hiring-freelancers.jpg/1280px-Mistakes-to-avoid-when-hiring-freelancers.jpg'
     },
     {
       title: 'My Last Doc',
       description: 'asdasd asdasd',
       file_url: 'http://google.com',
       updated_at: '11/11/16',
-      image_url: 'http://google.com'
+      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Mistakes-to-avoid-when-hiring-freelancers.jpg/1280px-Mistakes-to-avoid-when-hiring-freelancers.jpg'
     }
   ];
 }
