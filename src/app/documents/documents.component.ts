@@ -1,38 +1,35 @@
 /**
  * Created by oscar on 31/05/17.
  */
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs/Rx';
 import {Document} from './document';
+import {DocumentService} from './documents.service';
 
 @Component({
   selector: 'documents',
   templateUrl: 'documents.component.html',
-  styleUrls: ['document.component.css']
+  styleUrls: ['document.component.css'],
+  providers: [DocumentService]
 })
-export class DocumentsComponent {
-  pageTitle: string = 'Document Dashboard';
+export class DocumentsComponent implements OnInit {
+  pageTitle = 'Document Dashboard';
+  documents: Document[];
+  errorMessage: string;
 
-  documents: Document[] = [
-    {
-      title: 'My First Doc',
-      description: 'asdasd asdasd',
-      file_url: 'http://google.com',
-      updated_at: '11/11/16',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Mistakes-to-avoid-when-hiring-freelancers.jpg/1280px-Mistakes-to-avoid-when-hiring-freelancers.jpg'
-    },
-    {
-      title: 'My Second Doc',
-      description: 'asdasd asdasd',
-      file_url: 'http://google.com',
-      updated_at: '11/11/16',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Mistakes-to-avoid-when-hiring-freelancers.jpg/1280px-Mistakes-to-avoid-when-hiring-freelancers.jpg'
-    },
-    {
-      title: 'My Last Doc',
-      description: 'asdasd asdasd',
-      file_url: 'http://google.com',
-      updated_at: '11/11/16',
-      image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Mistakes-to-avoid-when-hiring-freelancers.jpg/1280px-Mistakes-to-avoid-when-hiring-freelancers.jpg'
-    }
-  ];
+  constructor(private documentService: DocumentService) {
+  }
+
+  ngOnInit() {
+    let timer = Observable.timer(0, 5000);
+    timer.subscribe(() => this.getDocuments());
+  }
+
+  getDocuments() {
+    this.documentService.getDocuments()
+      .subscribe(
+        documents => this.documents = documents,
+        error => this.errorMessage = <any>error
+      );
+  }
 }
